@@ -1,0 +1,37 @@
+.table-section {
+    align-self: stretch;
+}
+
+.table-section__title {
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.table {
+    align-self: stretch;
+    gap: 0;
+}
+
+.table__header {
+    background-color: #FFFFFF;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000000;
+    padding: 6px;
+    font-size: 16px;
+}
+
+.table__row {
+    background-color: #FFFFFF;
+    font-size: 16px;
+}
+
+.table__row:nth-child(2n+1) {
+    background-color: #F2F2F2;
+}
+
+.table__cell {
+    padding: 6px;
+    font-weight: 500;
+    border-bottom: 1px solid #EDEFF1;
+}
