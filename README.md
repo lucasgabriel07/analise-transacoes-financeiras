@@ -11,3 +11,12 @@ Aplicação web server-side para análise de transações financeiras e identifi
 - HTML
 - CSS
 - JavaScript
+
+## 📅 Andamento
+
+### Semana 1
+- ✅ Criação do projeto base
+- ✅ Formulário para importar transações
+- ✅ Leitura de arquivos CSV
+- ✅ Salvar transações no banco de dados
+- ✅ Registrar e listar importações realizadas
