@@ -26,11 +26,7 @@
           <p class="form-message">Selecione o arquivo para realizar o upload</p>
           <input type="submit" id="submit" value="Importar">
         </form>
-        {% if mensagem %}
-          <span class="info" style="background-color: {{ cor }};">
-              {{ mensagem }}
-          </span>
-        {% endif %}
+        {% include 'partials/_alerts.html' %}
       </section>
       
       {% if importacoes %}

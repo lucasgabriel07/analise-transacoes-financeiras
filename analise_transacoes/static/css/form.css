@@ -56,12 +56,21 @@
     cursor: pointer;
 }
 
-.info {
-    color: #FFFFFF;
-    font-weight: 500;
+.message {
     text-align: center;
+    font-weight: 500;
     align-self: stretch;
     margin-top: 20px;
     padding: 6px;
     border-radius: 5px;
+}
+
+.message--success {
+    color: #0F520F;
+    background-color: #C8F0C8;
+}
+
+.message--error {
+    color: #AF0C22;
+    background-color: #F8D7DA;
 }
