@@ -7,10 +7,11 @@ Início: 12/04/2022
 Aplicação web server-side para análise de transações financeiras e identificação de possíveis transações suspeitas.
 
 ## 🛠 Tecnologias utilizadas
-Python + Django  
+- Python + Django  
 - HTML
 - CSS
 - JavaScript
+- PostgreSQL
 
 ## 📅 Andamento
 
