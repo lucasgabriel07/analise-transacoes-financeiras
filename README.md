@@ -7,7 +7,7 @@ Início: 12/04/2022
 Aplicação web server-side para análise de transações financeiras e identificação de possíveis transações suspeitas.
 
 ## 🛠 Tecnologias utilizadas
-- Python + Django
+Python + Django  
 - HTML
 - CSS
 - JavaScript
@@ -15,8 +15,15 @@ Aplicação web server-side para análise de transações financeiras e identifi
 ## 📅 Andamento
 
 ### Semana 1
-- ✅ Criação do projeto base
-- ✅ Formulário para importar transações
-- ✅ Leitura de arquivos CSV
-- ✅ Salvar transações no banco de dados
-- ✅ Registrar e listar importações realizadas
+✅ Criação do projeto base  
+✅ Formulário para importar transações  
+✅ Leitura de arquivos CSV  
+✅ Salvar transações no banco de dados  
+✅ Registrar e listar importações realizadas
+
+### Semana 2
+⌛ CRUD de usuários  
+⌛ Controle de acesso  
+⌛ Registrar quem efetuou importação  
+⌛ Detalhar importação  
+⌛ Exclusão lógica de usuários
