@@ -1,0 +1,29 @@
+.section-cadastro {
+    align-self: stretch;
+}
+
+.form-cadastro {
+    gap: 16px;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-self: stretch;
+}
+
+.form-cadastro__label {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+}
+
+.form__input {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    align-self: stretch;
+    padding: 8px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}

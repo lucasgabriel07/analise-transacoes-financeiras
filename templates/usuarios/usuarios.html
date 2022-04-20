@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <main>
+    <section class="users-section">
+      <h1 class="title">Usuários cadastrados</h1>
+
+      {% if usuarios %}
+        <a href="{% url 'cadastro' %}" class="button">Novo</a>
+        <table class="table" cellspacing="0">
+          <thead>
+            <th class="table__header">Id</th>
+            <th class="table__header">Nome</th>
+            <th class="table__header">Email</th>
+            <th class="table__header">Opções</th>
+          </thead>
+          <tbody>
+            {% for usuario in usuarios %}
+              <tr class="table__row">
+                <td class="table__cell">{{ usuario.id }}</td>
+                <td class="table__cell">{{ usuario.first_name }}</td>
+                <td class="table__cell">{{ usuario.email }}</td>
+                <td class="table__cell">
+                  <a href="#" class="table-button edit-button">Editar</a>
+                  <a href="#" class="table-button remove-button">Remover</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="users__message">Não existem outros usuários cadastrados.</p>
+        <center>
+          <a href="{% url 'cadastro' %}" class="button">Cadastrar usuário</a>
+        </center>
+      {% endif %}
+
+
+    </section>
+  </main>
+
+{% endblock %}

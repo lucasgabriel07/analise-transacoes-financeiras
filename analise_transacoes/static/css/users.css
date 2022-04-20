@@ -1,0 +1,23 @@
+.users__message {
+    font-size: 20px;
+    margin: 32px;
+}
+
+.table-button {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    color: #012637;
+    background-color: #0DCAF0;
+}
+
+.remove-button {
+    color: #FFFFFF;
+    background-color: #DC3545;
+}

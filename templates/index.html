@@ -1,39 +1,27 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise de Transações</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
-    <link rel="stylesheet" href="{% static 'css/table.css' %}">
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
-  </head>
-
-  <body>
-    <main>
-      <section class="form-section">
-        <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data" class="form"> 
-          {% csrf_token %}
-          <h1 class="form__title">Importar Transações</h1>
-          <div class="form__container">
-              <label for="upload" class="form__label choose">Escolher arquivo</label>
-              <label for="upload" class="form__label" id="filename">Nenhum arquivo escolhido</label>
-          </div>
-          <input type="file" id="upload" name="upload" required>
-          <p class="form-message">Selecione o arquivo para realizar o upload</p>
-          <input type="submit" id="submit" value="Importar">
-        </form>
-        {% include 'partials/_alerts.html' %}
-      </section>
-      
-      {% if importacoes %}
-        <section class="table-section">
-          <h3 class="table-section__title">Importações realizadas</h3>
-          <table class="table" cellspacing="0">
+  <main>
+    <section class="form-section">
+      <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data" class="form"> 
+        {% csrf_token %}
+        <h1 class="title">Importar Transações</h1>
+        <div class="form__container">
+            <label for="upload" class="form__label choose">Escolher arquivo</label>
+            <label for="upload" class="form__label" id="filename">Nenhum arquivo escolhido</label>
+        </div>
+        <input type="file" id="upload" name="upload" required>
+        <p class="form-message">Selecione o arquivo para realizar o upload</p>
+        <input type="submit" id="submit" class="button" value="Importar">
+      </form>
+      {% include 'partials/_alerts.html' %}
+    </section>
+    
+    {% if importacoes %}
+      <section class="table-section">
+        <h3 class="table-section__title">Importações realizadas</h3>
+        <table class="table" cellspacing="0">
           <thead>
             <th class="table__header">Data transações</th>
             <th class="table__header">Data importação</th>
@@ -46,11 +34,11 @@
               </tr>
             {% endfor %}
           </tbody>
-          </table>
-        </section>
-      {% endif %}
-    </main>
+        </table>
+      </section>
+    {% endif %}
+  </main>
 
-    <script src="{% static 'js/form.js' %}"></script>
-  </body>
-</html>
+  <script src="{% static 'js/form.js' %}"></script>
+
+{% endblock %}
