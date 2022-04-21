@@ -30,9 +30,9 @@
                       Remover
                     </button>
                   {% else %}
-                    <a href="{% url 'deletar_usuario' usuario.id %}" class="table-button remove-button">
+                    <button class="table-button remove-button" data-href="deletar/{{ usuario.id }}">
                       Remover
-                    </a>
+                    </button>
                   {% endif %}
                 </td>
               </tr>
@@ -49,5 +49,7 @@
       {% include 'partials/_alerts.html' %}
     </section>
   </main>
+
+  <script src="{% static 'js/users.js' %}"></script>
 
 {% endblock %}

@@ -20,11 +20,11 @@
 .remove-button {
     color: #FFFFFF;
     background-color: #DC3545;
+    padding: 5.5px 4px;
 }
 
 .remove-button--inactive {
     cursor: default;
     color: #757575;
     background-color: #CCCCCC;
-    padding: 6px 4px;
 }
