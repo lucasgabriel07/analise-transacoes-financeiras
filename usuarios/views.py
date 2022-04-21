@@ -105,6 +105,49 @@ def deletar(request, id):
     else:
         messages.error(request, 'Erro ao deletar usuário.')
     return redirect('usuarios')
+
+def editar(request, id):
+    usuario = User.objects.get(id=id)
+    
+    if request.method == 'POST':
+        nome = request.POST['nome']
+        email = request.POST['email']
+        
+        if empty_field(nome):
+            messages.error(request, 'O campo nome não pode ficar em branco')
+        if empty_field(email):
+            messages.error(request, 'O campo email não pode ficar em branco')
+            
+        if email != usuario.email and User.objects.filter(email=email).exists():
+            messages.error(request, 'Já existe um usuário cadastrado com esse email.')
+        else:
+            User.objects.filter(id=id).update(first_name=nome, email=email, username=email)
+            messages.success(request, 'Alterações salvas!')
+        
+        return redirect('.')
+    
+    context = {
+        'usuario': usuario,
+        'pagina': 'usuarios'
+    }
+    
+    return render(request, 'usuarios/editar.html', context)
+
+def alterar_senha(request, id):
+    if request.method == 'POST':
+        senha_atual = request.POST['senha']
+        nova_senha = request.POST['senha2']
+        
+        username = User.objects.get(id=id).username
+
+        usuario = auth.authenticate(request, username=username, password=senha_atual)
+        if usuario is not None:
+            usuario.set_password(nova_senha)
+            usuario.save()
+            messages.success(request, 'Alterações salvas!')
+        else:
+            messages.error(request, 'Senha incorreta.')
+    return redirect(f'/usuarios/editar/{id}')
     
 def empty_field(field):
     return field.strip() == ''

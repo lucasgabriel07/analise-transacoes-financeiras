@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  {% include 'partials/_menu.html' %}
+  
+  <main>
+    <section class="edit-section">
+      <h1 class="title">Editar usuário</h1>
+      
+      <form action="{% url 'editar_usuario' usuario.id %}" method="POST" enctype="multipart/form-data" 
+      class="form form-cadastro"> 
+        {% csrf_token %}
+        <h2 class="form__title">Informações pessoais</h2>
+        <div class="form__field">
+          <label for="name" class="form-cadastro__label">Nome</label>
+          <input type="text" id="name" name="nome" class="form__input" required 
+          value="{{ usuario.first_name }}">
+        </div>
+        <div class="form__field">
+          <label for="email" class="form-cadastro__label">Email</label>
+          <input type="email" id="email" name="email" class="form__input" required 
+          value="{{ usuario.email }}">
+        </div>
+        <input type="submit" id="edit" class="button" value="Salvar alterações">
+        {% include 'partials/_alerts.html' %}
+      </form>
+
+      <hr width="100%">
+
+      <form action="{% url 'alterar_senha' usuario.id %}" method="POST" enctype="multipart/form-data" 
+      class="form form-cadastro"> 
+        {% csrf_token %}
+        <h2 class="form__title">Senha</h2>
+         <div class="form__field">
+           <label for="login-senha" class="form-cadastro__label">Senha atual</label>
+           <input type="password" id="login-senha" name="senha" class="form__input" required>
+        </div>
+        <div class="form__field">
+          <label for="login-senha-2" class="form-cadastro__label">Nova senha</label>
+          <input type="password" id="login-senha-2" name="senha2" class="form__input" required>
+        </div>
+        <input type="submit" id="edit" class="button" value="Salvar alterações">
+      </form>
+    </section>
+  </main>
+
+  <script src="{% static 'js/users.js' %}"></script>
+
+{% endblock %}

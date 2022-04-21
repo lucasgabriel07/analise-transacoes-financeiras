@@ -24,7 +24,7 @@
                 <td class="table__cell">{{ usuario.first_name }}</td>
                 <td class="table__cell">{{ usuario.email }}</td>
                 <td class="table__cell">
-                  <a href="#" class="table-button edit-button">Editar</a>
+                  <a href="{% url 'editar_usuario' usuario.id %}" class="table-button edit-button">Editar</a>
                   {% if usuario == request.user %}
                     <button class="table-button remove-button remove-button--inactive" disabled>
                       Remover

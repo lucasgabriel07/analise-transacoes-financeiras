@@ -23,7 +23,7 @@ Aplicação web server-side para análise de transações financeiras e identifi
 ✅ Registrar e listar importações realizadas
 
 ### Semana 2
-⌛ CRUD de usuários  
+✅ CRUD de usuários  
 ✅ Controle de acesso  
 ⌛ Registrar quem efetuou importação  
 ⌛ Detalhar importação  
