@@ -27,12 +27,19 @@
           <thead>
             <th class="table__header">Data transações</th>
             <th class="table__header">Data importação</th>
+            <th class="table__header">Usuário</th>
+            <th class="table__header">Opções</th>
           </thead>
           <tbody>
             {% for importacao in importacoes %}
               <tr class="table__row">
                 <td class="table__cell">{{ importacao.data_transacoes.date }}</td>
                 <td class="table__cell">{{ importacao.data_importacao }}</td>
+                <td class="table__cell">{{ importacao.user.first_name }}</td>
+                <td class="table__cell">
+                  <a href="#" class="table-button detail-button">Detalhar</a>
+                </td>
+                
               </tr>
             {% endfor %}
           </tbody>

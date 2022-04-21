@@ -1,15 +1,21 @@
 from django.contrib import messages
 from . import csv_handler
 from .exceptions import EmptyFileException, InvalidFileException, DateAlreadyRegisteredException
+from importacoes.models import Importacao
 
 
 def submit_form(request):
     file = request.FILES['upload']
     
     try:
-        transacoes_validas, transacoes_invalidas = csv_handler.handle(file)
+        data_transacoes, transacoes_validas, transacoes_invalidas = csv_handler.handle(file)
 
         if transacoes_validas > 0:
+            importacao = Importacao.objects.create(
+                user = request.user,
+                data_transacoes = data_transacoes
+            )
+            importacao.save()
             message = (f'Upload completo! {transacoes_validas} transações adicionadas '
                     f'e {transacoes_invalidas} transações inválidas.')
             messages.success(request, message)

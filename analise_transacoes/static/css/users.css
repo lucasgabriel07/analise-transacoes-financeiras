@@ -3,32 +3,6 @@
     margin: 32px;
 }
 
-.table-button {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 4px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.edit-button {
-    color: #012637;
-    background-color: #0DCAF0;
-}
-
-.remove-button {
-    color: #FFFFFF;
-    background-color: #DC3545;
-    padding: 5.5px 4px;
-}
-
-.remove-button--inactive {
-    cursor: default;
-    color: #757575;
-    background-color: #CCCCCC;
-}
-
 .form__title {
     align-self: start;
 }

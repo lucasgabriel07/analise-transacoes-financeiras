@@ -57,11 +57,7 @@ def handle(file):
         else:
             transacoes_invalidas += 1
     
-    if transacoes_validas > 0:
-        importacao = Importacao.objects.create(data_transacoes = date)
-        importacao.save()
-    
-    return transacoes_validas, transacoes_invalidas
+    return date, transacoes_validas, transacoes_invalidas
 
 def line_is_valid(line, file_date):
     try:

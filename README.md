@@ -25,6 +25,6 @@ Aplicação web server-side para análise de transações financeiras e identifi
 ### Semana 2
 ✅ CRUD de usuários  
 ✅ Controle de acesso  
-⌛ Registrar quem efetuou importação  
+✅ Registrar quem efetuou importação  
 ⌛ Detalhar importação  
 ✅ Exclusão lógica de usuários
