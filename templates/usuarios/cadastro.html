@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 
+  {% include 'partials/_menu.html'%}
+  
   <main>
     <section class="section-cadastro">
       <form action="{% url 'cadastro' %}" method="POST" enctype="multipart/form-data" 

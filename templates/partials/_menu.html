@@ -1,0 +1,15 @@
+{% load static %}
+
+<header>
+  <nav class="menu">
+    <a href="../importacoes" 
+      class="menu__link {% if pagina == 'importacoes' %}menu__link--active{% endif %}">
+      Importações
+    </a>
+    <a href="../usuarios" 
+      class="menu__link {% if pagina == 'usuarios' %}menu__link--active{% endif %}">
+      Usuários
+    </a>
+    <a href="../logout" class="menu__link">Sair</a>
+  </nav>
+</header>

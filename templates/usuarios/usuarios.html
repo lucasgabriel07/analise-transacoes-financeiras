@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 
+  {% include 'partials/_menu.html' %}
+  
   <main>
     <section class="users-section">
       <h1 class="title">Usuários cadastrados</h1>
@@ -36,7 +38,7 @@
         </center>
       {% endif %}
 
-
+      {% include 'partials/_alerts.html' %}
     </section>
   </main>
 

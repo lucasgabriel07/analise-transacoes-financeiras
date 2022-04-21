@@ -1,0 +1,9 @@
+{
+    "python.terminal.activateEnvironment": true,
+    "[django-html]": {
+        "editor.tabSize": 2,
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html",
+    },
+}

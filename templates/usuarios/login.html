@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <main>
+    <section class="section-cadastro">
+      <form action="{% url 'login' %}" method="POST" enctype="multipart/form-data" 
+      class="form form-cadastro"> 
+        {% csrf_token %}
+        <h1 class="title">Sistema de análise de transações financeiras</h1>
+        <div class="form__field">
+          <label for="login-email" class="form-cadastro__label">Email</label>
+          <input type="email" id="login-email" name="email" class="form__input" required>
+        </div>
+        <div class="form__field">
+          <label for="login-senha" class="form-cadastro__label">Senha</label>
+          <input type="password" id="login-senha" name="senha" class="form__input" required>
+        </div>
+        <input type="submit" id="login" class="button" value="Login">
+      </form>
+      {% include 'partials/_alerts.html' %}
+    </section>
+  </main>
+
+{% endblock %}

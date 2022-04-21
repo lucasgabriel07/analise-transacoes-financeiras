@@ -9,6 +9,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -17,7 +18,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 64px;
+    padding: 40px;
     gap: 32px;
     width: 70%;
 }
