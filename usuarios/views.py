@@ -82,12 +82,29 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 return redirect('/importacoes')
+            messages.error(request, 'Login e/ou senha inválidos.')
             return redirect('login')
     return render(request, 'usuarios/login.html')
 
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+def deletar(request, id):
+    if id != request.user.id:
+        try:
+            usuario = User.objects.get(id=id)
+        except User.DoesNotExist:
+            messages.error(request, 'Usuário não encontrado.')
+        else:
+            if usuario.is_superuser:
+                messages.error(request, 'Erro! Este usuário não pode ser deletado.')
+            else:
+                User.objects.filter(id=id).update(is_active=False)
+                messages.success(request, 'Usuário removido com sucesso!')
+    else:
+        messages.error(request, 'Erro ao deletar usuário.')
+    return redirect('usuarios')
     
 def empty_field(field):
     return field.strip() == ''

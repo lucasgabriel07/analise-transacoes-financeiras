@@ -27,4 +27,4 @@ Aplicação web server-side para análise de transações financeiras e identifi
 ✅ Controle de acesso  
 ⌛ Registrar quem efetuou importação  
 ⌛ Detalhar importação  
-⌛ Exclusão lógica de usuários
+✅ Exclusão lógica de usuários

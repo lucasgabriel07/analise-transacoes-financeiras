@@ -25,7 +25,15 @@
                 <td class="table__cell">{{ usuario.email }}</td>
                 <td class="table__cell">
                   <a href="#" class="table-button edit-button">Editar</a>
-                  <a href="#" class="table-button remove-button">Remover</a>
+                  {% if usuario == request.user %}
+                    <button class="table-button remove-button remove-button--inactive" disabled>
+                      Remover
+                    </button>
+                  {% else %}
+                    <a href="{% url 'deletar_usuario' usuario.id %}" class="table-button remove-button">
+                      Remover
+                    </a>
+                  {% endif %}
                 </td>
               </tr>
             {% endfor %}
