@@ -1,6 +1,6 @@
 from django.contrib import messages
 from . import csv_handler
-from .exceptions import EmptyFileException, InvalidFileException, DateAlreadyRegisteredException
+from .exceptions import *
 
 
 def submit_form(request):
