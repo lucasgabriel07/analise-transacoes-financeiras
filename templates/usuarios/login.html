@@ -2,17 +2,21 @@
 {% load static %}
 {% block content %}
 
+  <header class="login__header">
+    Sistema de análise de transações financeiras
+  </header>
+  
   <main>
-    <section class="section-cadastro">
+    <section class="section-login">
+      <h1 class="login__title">Login</h1>
       <form action="{% url 'login' %}" method="POST" enctype="multipart/form-data" 
-      class="form form-cadastro"> 
+      class="form form-login"> 
         {% csrf_token %}
-        <h1 class="title">Sistema de análise de transações financeiras</h1>
-        <div class="form__field">
+        <div class="form-login__field">
           <label for="login-email" class="form-cadastro__label">Email</label>
           <input type="email" id="login-email" name="email" class="form__input" required>
         </div>
-        <div class="form__field">
+        <div class="form-login__field">
           <label for="login-senha" class="form-cadastro__label">Senha</label>
           <input type="password" id="login-senha" name="senha" class="form__input" required>
         </div>
