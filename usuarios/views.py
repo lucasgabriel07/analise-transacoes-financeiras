@@ -91,63 +91,68 @@ def logout(request):
     return redirect('login')
 
 def deletar(request, id):
-    if id != request.user.id:
-        try:
-            usuario = User.objects.get(id=id)
-        except User.DoesNotExist:
-            messages.error(request, 'Usuário não encontrado.')
-        else:
-            if usuario.is_superuser:
-                messages.error(request, 'Erro! Este usuário não pode ser deletado.')
+    if request.user.is_authenticated:
+        if id != request.user.id:
+            try:
+                usuario = User.objects.get(id=id)
+            except User.DoesNotExist:
+                messages.error(request, 'Usuário não encontrado.')
             else:
-                User.objects.filter(id=id).update(is_active=False)
-                messages.success(request, 'Usuário removido com sucesso!')
-    else:
-        messages.error(request, 'Erro ao deletar usuário.')
-    return redirect('usuarios')
+                if usuario.is_superuser:
+                    messages.error(request, 'Erro! Este usuário não pode ser deletado.')
+                else:
+                    User.objects.filter(id=id).update(is_active=False)
+                    messages.success(request, 'Usuário removido com sucesso!')
+        else:
+            messages.error(request, 'Erro ao deletar usuário.')
+        return redirect('usuarios')
+    return redirect('login')
 
 def editar(request, id):
-    usuario = User.objects.get(id=id)
-    
-    if request.method == 'POST':
-        nome = request.POST['nome']
-        email = request.POST['email']
+    if request.user.is_authenticated:
+        usuario = User.objects.get(id=id)
         
-        if empty_field(nome):
-            messages.error(request, 'O campo nome não pode ficar em branco')
-        if empty_field(email):
-            messages.error(request, 'O campo email não pode ficar em branco')
+        if request.method == 'POST':
+            nome = request.POST['nome']
+            email = request.POST['email']
             
-        if email != usuario.email and User.objects.filter(email=email).exists():
-            messages.error(request, 'Já existe um usuário cadastrado com esse email.')
-        else:
-            User.objects.filter(id=id).update(first_name=nome, email=email, username=email)
-            messages.success(request, 'Alterações salvas!')
+            if empty_field(nome):
+                messages.error(request, 'O campo nome não pode ficar em branco')
+            if empty_field(email):
+                messages.error(request, 'O campo email não pode ficar em branco')
+                
+            if email != usuario.email and User.objects.filter(email=email).exists():
+                messages.error(request, 'Já existe um usuário cadastrado com esse email.')
+            else:
+                User.objects.filter(id=id).update(first_name=nome, email=email, username=email)
+                messages.success(request, 'Alterações salvas!')    
+            return redirect('.')
         
-        return redirect('.')
+        context = {
+            'usuario': usuario,
+            'pagina': 'usuarios'
+        }
+        return render(request, 'usuarios/editar.html', context)
     
-    context = {
-        'usuario': usuario,
-        'pagina': 'usuarios'
-    }
-    
-    return render(request, 'usuarios/editar.html', context)
+    return redirect('login')
 
 def alterar_senha(request, id):
-    if request.method == 'POST':
-        senha_atual = request.POST['senha']
-        nova_senha = request.POST['senha2']
-        
-        username = User.objects.get(id=id).username
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            senha_atual = request.POST['senha']
+            nova_senha = request.POST['senha2']
+            
+            username = User.objects.get(id=id).username
 
-        usuario = auth.authenticate(request, username=username, password=senha_atual)
-        if usuario is not None:
-            usuario.set_password(nova_senha)
-            usuario.save()
-            messages.success(request, 'Alterações salvas!')
-        else:
-            messages.error(request, 'Senha incorreta.')
-    return redirect(f'/usuarios/editar/{id}')
+            usuario = auth.authenticate(request, username=username, password=senha_atual)
+            if usuario is not None:
+                usuario.set_password(nova_senha)
+                usuario.save()
+                messages.success(request, 'Alterações salvas!')
+            else:
+                messages.error(request, 'Senha incorreta.')
+        return redirect(f'/usuarios/editar/{id}')
+    return redirect('login')
     
 def empty_field(field):
     return field.strip() == ''

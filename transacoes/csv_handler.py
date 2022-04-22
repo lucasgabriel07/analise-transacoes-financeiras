@@ -5,7 +5,7 @@ from importacoes.models import Importacao
 from .exceptions import EmptyFileException, InvalidFileException, DateAlreadyRegisteredException
 
 
-def handle(file):
+def handle(request, file):
     if(len(file.read()) == 0):
         raise EmptyFileException()
     
@@ -26,6 +26,11 @@ def handle(file):
                     raise DateAlreadyRegisteredException
             except ValueError:
                 raise InvalidFileException
+            else:
+                importacao = Importacao.objects.create(
+                    user = request.user,
+                    data_transacoes = date
+                )
         
         if line_is_valid(line, date):
             try:
@@ -40,6 +45,7 @@ def handle(file):
                 data_transacao = datetime.strptime(info_transacao[7], '%Y-%m-%dT%H:%M:%S')
 
                 transacao = Transacao.objects.create(
+                    importacao = importacao,
                     banco_origem = banco_origem,
                     agencia_origem = agencia_origem,
                     conta_origem = conta_origem,
@@ -57,7 +63,12 @@ def handle(file):
         else:
             transacoes_invalidas += 1
     
-    return date, transacoes_validas, transacoes_invalidas
+    if transacoes_validas > 0:
+        importacao.save()
+    else:
+        importacao.delete()
+    
+    return transacoes_validas, transacoes_invalidas
 
 def line_is_valid(line, file_date):
     try:

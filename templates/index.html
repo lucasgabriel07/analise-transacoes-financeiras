@@ -37,7 +37,8 @@
                 <td class="table__cell">{{ importacao.data_importacao }}</td>
                 <td class="table__cell">{{ importacao.user.first_name }}</td>
                 <td class="table__cell">
-                  <a href="#" class="table-button detail-button">Detalhar</a>
+                  <a href="{% url 'detalhar_importacao' importacao.id %}" 
+                  class="table-button detail-button">Detalhar</a>
                 </td>
                 
               </tr>

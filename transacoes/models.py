@@ -1,8 +1,10 @@
 from django.db import models
 from datetime import datetime
+from importacoes.models import Importacao
 
 
 class Transacao(models.Model):
+    importacao = models.ForeignKey(Importacao, on_delete=models.RESTRICT)
     banco_origem = models.CharField(max_length=100)
     agencia_origem = models.CharField(max_length=4)
     conta_origem = models.CharField(max_length=7)

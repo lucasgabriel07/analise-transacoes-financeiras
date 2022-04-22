@@ -1,0 +1,32 @@
+.container {
+    padding: 16px;
+    border: 1px solid #E2E5E9;
+    border-radius: 5px;
+    align-self: stretch;
+}
+
+.info-table tbody {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.info-table tr {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-table th {
+    font-weight: 500;
+}
+
+.info-table td {
+    background-color: #E9ECEF;
+    border: 1px solid #CCCDCF;
+    border-radius: 5px;
+    padding: 8px;
+    min-width: 250px;
+    font-weight: 500;
+}

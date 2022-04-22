@@ -21,6 +21,29 @@
     font-size: 16px;
 }
 
+.table-transacoes__header {
+    background-color: #FFFFFF;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 6px;
+    font-size: 16px;
+    border: 1px solid #E2E5E9;
+}
+
+.table-transacoes__header:last-of-type {
+    border-bottom: 2px solid #000000;
+}
+
+.table-transacoes__subheader {
+    background-color: #FFFFFF;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid #E2E5E9;
+    border-bottom: 2px solid #000000;
+    padding: 6px;
+    font-size: 16px;
+}
+
 .table__row {
     background-color: #FFFFFF;
     font-size: 16px;
@@ -33,7 +56,15 @@
 .table__cell {
     padding: 6px;
     font-weight: 500;
-    border-bottom: 1px solid #EDEFF1;
+    border-bottom: 1px solid #E2E5E9;
+}
+
+.table-transacoes__cell {
+    padding: 6px;
+    font-weight: 500;
+    padding: 6px;
+    font-weight: 500;
+    border: 1px solid #E2E5E9;
 }
 
 .table-button {
