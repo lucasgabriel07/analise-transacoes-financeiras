@@ -2,7 +2,7 @@ import codecs
 from datetime import datetime
 from apps.transacoes.models import Transacao
 from apps.importacoes.models import Importacao
-from .exceptions import EmptyFileException, InvalidFileException, DateAlreadyRegisteredException
+from .exceptions import *
 
 
 def handle(request, file):
