@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from importacoes.models import Importacao
-from transacoes.models import Transacao
+from apps.importacoes.models import Importacao
+from apps.transacoes.models import Transacao
 from django.template.defaulttags import register
 
 

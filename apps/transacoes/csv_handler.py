@@ -1,7 +1,7 @@
 import codecs
 from datetime import datetime
-from transacoes.models import Transacao
-from importacoes.models import Importacao
+from apps.transacoes.models import Transacao
+from apps.importacoes.models import Importacao
 from .exceptions import EmptyFileException, InvalidFileException, DateAlreadyRegisteredException
 
 

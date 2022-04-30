@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from importacoes.models import Importacao
+from apps.importacoes.models import Importacao
 
 
 class Transacao(models.Model):
