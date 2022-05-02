@@ -28,3 +28,9 @@ Aplicação web server-side para análise de transações financeiras e identifi
 ✅ Registrar quem efetuou importação  
 ✅ Detalhar importação  
 ✅ Exclusão lógica de usuários
+
+### Semanas 3 e 4
+✅ Relatório de transações suspeitas  
+⌛ Suporte a upload de arquivos em formato XML  
+⌛ Testes automatizados  
+⌛ Deploy em ambiente Cloud  
