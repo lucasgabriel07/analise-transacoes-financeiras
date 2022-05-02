@@ -38,3 +38,10 @@
 #upload {
     display: none;
 }
+
+#month {
+    align-self: stretch;
+    padding: 8px;
+    font-size: 18px;
+    text-transform: capitalize;
+}

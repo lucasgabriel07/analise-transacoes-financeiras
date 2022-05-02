@@ -49,7 +49,7 @@
               <td class="table-transacoes__cell">{{ transacao.banco_destino }}</td>
               <td class="table-transacoes__cell">{{ transacao.agencia_destino }}</td>
               <td class="table-transacoes__cell">{{ transacao.conta_destino }}</td>
-              <td class="table-transacoes__cell">{{ transacao.valor_transacao|mask_money }}</td>
+              <td class="table-transacoes__cell">{{ transacao.valor_transacao|format_money }}</td>
             </tr>
           {% endfor %}
         </tbody>

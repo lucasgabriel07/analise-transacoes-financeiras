@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_menu.html'%}
+
+  <main>
+    <section class="form-section">
+      <form action="{% url 'analise' %}" method="GET" class="form"> 
+        <h1 class="title">Análise de Transações Suspeitas</h1>
+        <p class="form-message">Selecione o mês para realizar o upload</p>
+        <input type="month" id="month" name="mes" value="{{ data }}" required>
+        <input type="submit" id="analise-submit" class="button" value="Realizar análise">
+      </form>
+      {% include 'partials/_alerts.html' %}
+    </section>
+
+    {% if transacoes_suspeitas != None %}
+      <section>
+        <h3 class="table-section__title">Transações suspeitas</h3>
+        {% if transacoes_suspeitas %}
+          <table class="table" cellspacing="0">
+            <thead>
+              <th class="table-transacoes__header" colspan="3">Origem</th>
+              <th class="table-transacoes__header" colspan="3">Destino</th>
+              <th class="table-transacoes__header" rowspan="2">Valor</th>
+              <tr>
+                <th class="table-transacoes__subheader">Banco</th>
+                <th class="table-transacoes__subheader">Agência</th>
+                <th class="table-transacoes__subheader">Conta</th>
+                <th class="table-transacoes__subheader">Banco</th>
+                <th class="table-transacoes__subheader">Agência</th>
+                <th class="table-transacoes__subheader">Conta</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for transacao in transacoes_suspeitas %}
+                <tr class="table__row">
+                  <td class="table-transacoes__cell">{{ transacao.banco_origem }}</td>
+                  <td class="table-transacoes__cell">{{ transacao.agencia_origem }}</td>
+                  <td class="table-transacoes__cell">{{ transacao.conta_origem }}</td>
+                  <td class="table-transacoes__cell">{{ transacao.banco_destino }}</td>
+                  <td class="table-transacoes__cell">{{ transacao.agencia_destino }}</td>
+                  <td class="table-transacoes__cell">{{ transacao.conta_destino }}</td>
+                  <td class="table-transacoes__cell">{{ transacao.valor_transacao|format_money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>Nenhuma transação suspeita neste mês</p>
+        {% endif %}
+      </section>
+    {% endif %}
+    
+    {% if contas_suspeitas != None %}
+      <section>
+        <h3 class="table-section__title">Contas suspeitas</h3>
+        {% if contas_suspeitas %}
+          <table class="table" cellspacing="0">
+            <thead>
+              <th class="table__header">Banco</th>
+              <th class="table__header">Agência</th>
+              <th class="table__header">Conta</th>
+              <th class="table__header">Valor movimentado</th>
+              <th class="table__header">Tipo movimentação</th>
+            </thead>
+            <tbody>
+              {% for conta in contas_suspeitas %}
+                <tr class="table__row">
+                  <td class="table-transacoes__cell">{{ conta.banco }}</td>
+                  <td class="table-transacoes__cell">{{ conta.agencia }}</td>
+                  <td class="table-transacoes__cell">{{ conta.conta }}</td>
+                  <td class="table-transacoes__cell">{{ conta.valor_movimentado|format_money }}</td>
+                  <td class="table-transacoes__cell">{{ conta.tipo_movimentacao }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>Nenhuma conta com movimentações suspeitas neste mês</p>
+        {% endif %}
+      </section>
+    {% endif %}
+
+    {% if agencias_suspeitas != None %}
+      <section>
+        <h3 class="table-section__title">Agências suspeitas</h3>
+        {% if agencias_suspeitas %}
+          <table class="table" cellspacing="0">
+            <thead>
+              <th class="table__header">Banco</th>
+              <th class="table__header">Agência</th>
+              <th class="table__header">Valor movimentado</th>
+              <th class="table__header">Tipo movimentação</th>
+            </thead>
+            <tbody>
+              {% for agencia in agencias_suspeitas %}
+                <tr class="table__row">
+                  <td class="table-transacoes__cell">{{ agencia.banco }}</td>
+                  <td class="table-transacoes__cell">{{ agencia.agencia }}</td>
+                  <td class="table-transacoes__cell">{{ agencia.valor_movimentado|format_money }}</td>
+                  <td class="table-transacoes__cell">{{ agencia.tipo_movimentacao }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>Nenhuma agência com movimentações suspeitas neste mês</p>
+        {% endif %}
+      </section>
+    {% endif %}
+  </main>
+
+{% endblock %}

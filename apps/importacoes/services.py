@@ -2,6 +2,7 @@ from django.template.defaulttags import register
 from django.contrib import messages
 from . import csv_handler
 from .exceptions import *
+import locale
 
 
 def submit_form(request):
@@ -32,5 +33,6 @@ def submit_form(request):
         messages.error(request, message)
 
 @register.filter
-def mask_money(valor_transacao):
-    return f'R$ {valor_transacao:.2f}'.replace('.', ',')
+def format_money(valor):
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+    return locale.currency(valor, grouping=True)
