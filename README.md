@@ -30,7 +30,7 @@ Aplicação web server-side para análise de transações financeiras e identifi
 ✅ Exclusão lógica de usuários
 
 ### Semana 3
-✅ Relatório de transações suspeitas
-⌛ Suporte a upload de arquivos em formato XML
-⌛ Testes automatizados
-⌛ Deploy em ambiente Cloud
+✅ Relatório de transações suspeitas  
+⌛ Suporte a upload de arquivos em formato XML  
+⌛ Testes automatizados  
+⌛ Deploy em ambiente Cloud  
