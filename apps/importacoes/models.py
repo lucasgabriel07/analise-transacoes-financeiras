@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 
 class Importacao(models.Model):
-    user = models.ForeignKey(User, on_delete=models.RESTRICT)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     data_transacoes = models.DateTimeField()
     data_importacao = models.DateTimeField(default=datetime.now)
+    
+    class Meta:
+        verbose_name_plural = "importações"

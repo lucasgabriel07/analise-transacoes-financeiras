@@ -14,3 +14,6 @@ class Transacao(models.Model):
     valor_transacao = models.FloatField()
     data_transacao = models.DateTimeField()
     data_upload = models.DateTimeField(default=datetime.now)
+    
+    class Meta:
+        verbose_name_plural = "transações"
