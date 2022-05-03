@@ -31,6 +31,6 @@ Aplicação web server-side para análise de transações financeiras e identifi
 
 ### Semanas 3 e 4
 ✅ Relatório de transações suspeitas  
-⌛ Suporte a upload de arquivos em formato XML  
+✅ Suporte a upload de arquivos em formato XML  
 ⌛ Testes automatizados  
 ⌛ Deploy em ambiente Cloud  

@@ -5,7 +5,7 @@ const message = document.querySelector('.form-message')
 input.oninput = () => {
     const file = input.files[0]
 
-    if (file.name.endsWith('.csv')) {
+    if (file.name.endsWith('.csv') || file.name.endsWith('.xml')) {
         label.innerText = file.name
         message.style.color = 'green'
         message.innerText = 'Arquivo carregado.'
@@ -14,7 +14,7 @@ input.oninput = () => {
         input.value = null
         label.innerText = 'Nenhum arquivo escolhido'
         message.style.color = 'red'
-        message.innerText = 'Arquivo inválido. O arquivo deve ser do tipo csv.'
+        message.innerText = 'Arquivo inválido. O arquivo deve ser do tipo csv ou xml.'
         message.style.display = 'block'
     }
 }

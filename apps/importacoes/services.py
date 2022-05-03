@@ -1,6 +1,7 @@
 from django.template.defaulttags import register
 from django.contrib import messages
-from . import csv_handler
+from .importador.importador_csv import ImportadorCSV
+from .importador.importador_xml import ImportadorXML
 from .exceptions import *
 import locale
 
@@ -9,15 +10,27 @@ def submit_form(request):
     file = request.FILES['upload']
     
     try:
-        transacoes_validas, transacoes_invalidas = csv_handler.handle(request, file)
+        if file.name.endswith('.csv'):
+            importador = ImportadorCSV(file)
+        elif file.name.endswith('.xml'):
+            importador = ImportadorXML(file)
+        else:
+            message = 'Erro! Arquivo inválido'
+            messages.error(request, message)
+            return
 
-        if transacoes_validas > 0:
-            message = (f'Upload completo! {transacoes_validas} transações adicionadas '
-                    f'e {transacoes_invalidas} transações inválidas.')
+        importador.importar_transacoes(request)
+        qtd_transacoes_validas = importador.qtd_transacoes_validas
+        qtd_transacoes_invalidas = importador.qtd_transacoes_invalidas
+        
+        if qtd_transacoes_validas > 0:
+            message = (f'Upload completo! {qtd_transacoes_validas} transações adicionadas '
+                        f'e {qtd_transacoes_invalidas} transações inválidas.')
             messages.success(request, message)
 
         else:
-            message = f'Erro! Nenhuma transação válida. {transacoes_invalidas} transações inválidas.'
+            message = (f'Erro! Nenhuma transação válida. '
+                        f'{qtd_transacoes_invalidas} transações inválidas.')
             messages.error(request, message)
     
     except EmptyFileException:
